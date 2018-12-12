@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import frc.robot.subsystems.DriveTrain;
 import frc.robot.commands.automatic;
+import frc.robot.commands.driveReckon;
+import frc.robot.subsystems.DriveTrain;
 
 public class Robot extends TimedRobot {
   //public static DriveTrain m_subsystem = new DriveTrain();
@@ -28,6 +30,8 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("Robot Speed", 0);
     SmartDashboard.putNumber("Robot Steerage", 0);
+
+    SmartDashboard.putData("Drive Reckon", new driveReckon());
     
   //Init Sticks
     RobotMap.Boistick = new Joystick(RobotMap.BoyStickPort);
@@ -83,15 +87,9 @@ public class Robot extends TimedRobot {
     //This function is called periodically during operator control.
     Scheduler.getInstance().run();
 
-    double rawThro = RobotMap.Boistick.getRawAxis(1); //Get raw x axis
-    double rawSteer = RobotMap.Boistick.getRawAxis(2); //Get raw y axis
-
-    SmartDashboard.putNumber("Robot Speed", rawThro); //Put the values on the smart
-    SmartDashboard.putNumber("Robot Steerage", rawSteer);
-
-    //Move these to drivetrain!
-    RobotMap.starboardMotor.set((rawThro - rawSteer) * -1); //Use the axies
-    RobotMap.portMotor.set(rawThro + rawSteer); //Use the axies
+    //Call the drivetrain subsystem
+    DriveTrain.arcadeDrive(RobotMap.Boistick, RobotMap.portMotor, RobotMap.starboardMotor, false, 0,0);
+    SmartDashboard.putData("Drive Reckon", new driveReckon());
   }
 
   @Override
