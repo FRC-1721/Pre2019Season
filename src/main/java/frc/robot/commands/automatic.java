@@ -1,15 +1,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 
-/**
- * An example command.  You can replace me with your own command.
- */
-public class ExampleCommand extends Command {
-  public ExampleCommand() {
+public class automatic extends Command {
+  public automatic() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.m_subsystem);
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
