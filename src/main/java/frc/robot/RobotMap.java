@@ -8,7 +8,7 @@ public class RobotMap {
 
   //Joysticks
   public static Joystick Boistick;
-  public static int BoyStickPort; //Lol boystick port
+  public static int BoyStickPort = 0; //Lol boystick port
   
   //CAN Ports
   public static int starboardMotorCAN = 0; //Define Starboard Motor

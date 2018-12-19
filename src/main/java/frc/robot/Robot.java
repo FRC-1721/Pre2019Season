@@ -31,9 +31,11 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Robot Speed", 0);
     SmartDashboard.putNumber("Robot Steerage", 0);
 
-    SmartDashboard.putData("Drive Reckon", new driveReckon());
+    SmartDashboard.putData("Self Destruct", new driveReckon());
+
+    SmartDashboard.putBoolean("driveReckon", false);
     
-  //Init Sticks
+    //Init Sticks
     RobotMap.Boistick = new Joystick(RobotMap.BoyStickPort);
 
     //Init Motors
@@ -88,7 +90,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
 
     //Call the drivetrain subsystem
-    DriveTrain.arcadeDrive(RobotMap.Boistick, RobotMap.portMotor, RobotMap.starboardMotor, false, 0,0);
+    DriveTrain.arcadeDrive(RobotMap.Boistick, RobotMap.portMotor, RobotMap.starboardMotor, true, 0,0);
     SmartDashboard.putData("Drive Reckon", new driveReckon());
   }
 

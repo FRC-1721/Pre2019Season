@@ -1,5 +1,11 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.commands.driveReckon;
+import frc.robot.subsystems.DriveTrain;
 
 //import frc.robot.RobotMap;
 
@@ -8,12 +14,10 @@ package frc.robot;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
+  Joystick stick = new Joystick(0);
+  public Button Reckon = new JoystickButton(stick, 1);
 
-  //Init Joysticks
-
-  // button.whenPressed(new ExampleCommand());
-  // button.whileHeld(new ExampleCommand());
-  // button.whenReleased(new ExampleCommand());
+  public OI (){
+    Reckon.whileHeld(new driveReckon());
+  }
 }
